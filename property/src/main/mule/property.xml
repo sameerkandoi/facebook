@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<mule xmlns:secure-properties="http://www.mulesoft.org/schema/mule/secure-properties" xmlns:db="http://www.mulesoft.org/schema/mule/db"
+	xmlns:batch="http://www.mulesoft.org/schema/mule/batch"
+	xmlns:ee="http://www.mulesoft.org/schema/mule/ee/core" xmlns:http="http://www.mulesoft.org/schema/mule/http" xmlns="http://www.mulesoft.org/schema/mule/core" xmlns:doc="http://www.mulesoft.org/schema/mule/documentation" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.mulesoft.org/schema/mule/core http://www.mulesoft.org/schema/mule/core/current/mule.xsd
+http://www.mulesoft.org/schema/mule/http http://www.mulesoft.org/schema/mule/http/current/mule-http.xsd
+http://www.mulesoft.org/schema/mule/ee/core http://www.mulesoft.org/schema/mule/ee/core/current/mule-ee.xsd
+http://www.mulesoft.org/schema/mule/batch http://www.mulesoft.org/schema/mule/batch/current/mule-batch.xsd
+http://www.mulesoft.org/schema/mule/db http://www.mulesoft.org/schema/mule/db/current/mule-db.xsd
+http://www.mulesoft.org/schema/mule/secure-properties http://www.mulesoft.org/schema/mule/secure-properties/current/mule-secure-properties.xsd">
+	<http:listener-config name="HTTP_Listener_config" doc:name="HTTP Listener config" doc:id="109481fa-43ba-404b-b912-a21756aed362" >
+		<http:listener-connection host="localhost" port="8089" />
+	</http:listener-config>
+	<configuration-properties doc:name="Configuration properties" doc:id="8ff1df60-622e-43e1-932c-6a72cdddaab6" file="dev.yaml"/>
+	<secure-properties:config name="Secure_Properties_Config" doc:name="Secure Properties Config" doc:id="fd66d636-ae55-4b33-a926-95685b0e785e" file="dev.yaml" key="mulesoft12345678" />
+	<flow name="foreachFlow" doc:id="ccf15639-baef-45c5-aa7a-5d322d31e7f3" >
+		<http:listener doc:name="Listener" doc:id="d0b16424-0227-4116-854e-a22480d58eb2" config-ref="HTTP_Listener_config" path="proper" />
+		<logger level="INFO" doc:name="Logger" doc:id="2db5f2d8-3416-4a20-af31-a7392f19026b" message="the password is ${secure::db.password}"/>
+	</flow>
+</mule>
