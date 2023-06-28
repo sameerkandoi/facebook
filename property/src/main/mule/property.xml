@@ -16,5 +16,7 @@ http://www.mulesoft.org/schema/mule/secure-properties http://www.mulesoft.org/sc
 	<flow name="foreachFlow" doc:id="ccf15639-baef-45c5-aa7a-5d322d31e7f3" >
 		<http:listener doc:name="Listener" doc:id="d0b16424-0227-4116-854e-a22480d58eb2" config-ref="HTTP_Listener_config" path="proper" />
 		<logger level="INFO" doc:name="Logger" doc:id="2db5f2d8-3416-4a20-af31-a7392f19026b" message="the password is ${secure::db.password}"/>
+		<logger level="INFO" doc:name="Logger" doc:id="9e94c140-5509-4404-887f-7a2073901652" message="hey"/>
+		<logger level="INFO" doc:name="Logger" doc:id="b9ea14c4-cb88-4806-ab98-3ca8e5e623fd" message="hello"/>
 	</flow>
 </mule>
